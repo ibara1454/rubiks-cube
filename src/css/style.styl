@@ -1,0 +1,128 @@
+textureSize = 80px
+cubeSize = 3 * textureSize
+radius = textureSize * 0.1
+perspective = 1000px
+
+.red {
+    background-color: red
+}
+
+.green {
+    background-color: green
+}
+
+.yellow {
+    background-color: yellow
+}
+
+.orange {
+    background-color: orange
+}
+
+.blue {
+    background-color: blue
+}
+
+.white {
+    // background-color: white
+    background-color: grey
+}
+
+html, body {
+    position: relative
+    height: 100%
+}
+
+.container {
+    height: 100%
+    display: flex
+    /* Use flux to set cube to center */
+    align-items: center
+    justify-content: center
+    /* 3D settings */
+    perspective: perspective
+}
+
+.cube {
+    position: fixed
+    height: cubeSize
+    width: cubeSize
+    transform-style: preserve-3d
+    transform: rotateY(30deg) rotateX(30deg)
+    // animation: rotate 20000ms linear infinite
+}
+
+.surface {
+    position: absolute
+    height: 100%
+    width: 100%
+}
+
+.cube {
+    :nth-child(1) {
+        transform: translateX(- cubeSize / 2) rotateY(90deg)
+    }
+    :nth-child(2) {
+        transform: translateX(cubeSize / 2) rotateY(-90deg)
+    }
+    :nth-child(3) {
+        transform: translateY(cubeSize / 2) rotateX(-90deg)
+    }
+    :nth-child(4) {
+        transform: translateY(- cubeSize / 2) rotateX(90deg)
+    }
+    :nth-child(5) {
+        transform: translateZ(- cubeSize / 2) rotateX(180deg)
+    }
+    :nth-child(6) {
+        transform: translateZ(cubeSize / 2)
+    }
+}
+
+.texture {
+    position: absolute
+    height: textureSize
+    width: textureSize
+    border-radius: radius
+    box-sizing: border-box
+    border: solid 3px #fafafa
+}
+
+.surface {
+    :nth-child(1) {
+        transform: translateX(0 * textureSize) translateY(0 * textureSize)
+    }
+    :nth-child(2) {
+        transform: translateX(0 * textureSize) translateY(1 * textureSize)
+    }
+    :nth-child(3) {
+        transform: translateX(0 * textureSize) translateY(2 * textureSize)
+    }
+    :nth-child(4) {
+        transform: translateX(1 * textureSize) translateY(0 * textureSize)
+    }
+    :nth-child(5) {
+        transform: translateX(1 * textureSize) translateY(1 * textureSize)
+    }
+    :nth-child(6) {
+        transform: translateX(1 * textureSize) translateY(2 * textureSize)
+    }
+    :nth-child(7) {
+        transform: translateX(2 * textureSize) translateY(0 * textureSize)
+    }
+    :nth-child(8) {
+        transform: translateX(2 * textureSize) translateY(1 * textureSize)
+    }
+    :nth-child(9) {
+        transform: translateX(2 * textureSize) translateY(2 * textureSize)
+    }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(720deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
